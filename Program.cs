@@ -30,10 +30,11 @@ namespace HexpatCombiner
         static void Main(string[] args)
         {
             Console.WriteLine("https://github.com/DexrnZacAttack/HexpatCombiner");
-            if (args[0] == null && args[1] == null) { Console.WriteLine("HexpatCombiner.exe {string filePath} {bool addCombinationComment}"); }
+            if (args.Length < 1 && args.Length < 2) { Console.WriteLine("Usage: HexpatCombiner.exe {string filePath} {bool addCombinationComment}"); return; }
+
             string[] FileContent = File.ReadAllLines(args[0]);
 
-            Combine(FileContent, args[1].ToLower() == "true" ? true : false );
+            Combine(FileContent, (args[1] ?? "false").ToLower() == "true" ? true : false );
         }
 
         private const string ImportKeyword = "combine";
