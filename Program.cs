@@ -34,7 +34,7 @@ namespace HexpatCombiner
 
             string[] FileContent = File.ReadAllLines(args[0]);
 
-            Combine(FileContent, (args[1] ?? "false").ToLower() == "true" ? true : false );
+            Combine(FileContent, args.Length > 1 && (args[1] ?? "false").ToLower() == "true");
         }
 
         private const string ImportKeyword = "combine";
